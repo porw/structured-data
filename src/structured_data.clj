@@ -39,11 +39,51 @@
   
 
 (defn contains-point? [rectangle point]
-  )
+  (let [[[x y] [z k]] rectangle]
+    (let [[l m] point]
+      (and (cond
+             (< x l z) true
+             (== x l) true
+             (== l z) true
+             :else false
+             )
+           (cond
+             (< y m k) true
+             (== y m) true
+             (== k m) true
+             :else false
+             )
+           ))))
 
 (defn contains-rectangle? [outer inner]
-  :-)
-
+  (let [[[x1 y1] [x2 y2]] outer]
+    (let [[[x3 y3] [x4 y4]] inner]
+      (and (cond
+             (< x1 x3 x2) true
+             (== x1 x3) true
+             (== x2 x3) true
+             :else false
+             )
+           (cond
+             (< y1 y3 y2) true
+             (== y1 y3) true
+             (== y2 y3) true
+             :else false
+             )
+           (cond
+             (< x1 x4 x2) true
+             (== x1 x4) true
+             (== x2 x4) true
+             :else false
+             )
+           (cond
+             (< x1 y4 x2) true
+             (== x1 y4) true
+             (== x2 y4) true
+             :else false
+             )
+           )
+      )))
 (defn title-length [book]
   :-)
 
